@@ -1,4 +1,4 @@
-package kr.or.iei.event;
+package day19;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /*
- * ÇöÀç Å¬·¡½º¿¡ Listener¸¦ ±¸ÇöÇÏ´Â ¹æ¹ý
+ * ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Listenerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
  */
 public class Exam03 {
 	public static void main(String[] ar){
@@ -24,14 +24,14 @@ class Exam03_sub extends Frame implements ActionListener{
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
 	
-	private Button btn1 = new Button("¹öÆ°1");
-	private Button btn2 = new Button("¹öÆ°2");
-	private Label lb1 = new Label("°á°ú : ÇöÀç ´©¸¥ ¹öÆ°ÀÌ ¾ø½À´Ï´Ù.",Label.CENTER);
+	private Button btn1 = new Button("ï¿½ï¿½Æ°1");
+	private Button btn2 = new Button("ï¿½ï¿½Æ°2");
+	private Label lb1 = new Label("ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.",Label.CENTER);
 	
 	public Exam03_sub(){
-		super("Á¦¸ñÁÙ");
-		this.init(); //»ç¿ëÀÚ Á¤ÀÇ ¸Þ¼Òµå - È­¸é±¸¼º
-		this.start(); // »ç¿ëÀÚ Á¤ÀÇ ¸Þ¼Òµå - Event or Thread
+		super("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		this.init(); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ - È­ï¿½é±¸ï¿½ï¿½
+		this.start(); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ - Event or Thread
 		this.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = this.getSize();
@@ -42,7 +42,7 @@ class Exam03_sub extends Frame implements ActionListener{
 		this.setLocation(xpos, ypos);
 		this.setVisible(true);
 	}
-	private void init() { //È­¸é±¸¼º
+	private void init() { //È­ï¿½é±¸ï¿½ï¿½
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
 		this.add("North", lb1);
@@ -54,7 +54,7 @@ class Exam03_sub extends Frame implements ActionListener{
 		
 		
 	}
-	private void start() { //Thread, Event ¼³Á¤
+	private void start() { //Thread, Event ï¿½ï¿½ï¿½ï¿½
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 		
@@ -62,9 +62,9 @@ class Exam03_sub extends Frame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btn1){
-			lb1.setText("°á°ú : ¹öÆ°1À» ´©¸£¼Ì½À´Ï´Ù.");
+			lb1.setText("ï¿½ï¿½ï¿½ : ï¿½ï¿½Æ°1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ï´ï¿½.");
 		}else if(e.getSource()==btn2){
-			lb1.setText("°á°ú : ¹öÆ°2À» ´©¸£¼Ì½À´Ï´Ù.");
+			lb1.setText("ï¿½ï¿½ï¿½ : ï¿½ï¿½Æ°2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ï´ï¿½.");
 		}
 		
 	}

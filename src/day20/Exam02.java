@@ -1,3 +1,4 @@
+package day20;
 import java.awt.Choice;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -35,13 +36,13 @@ class Exam02_sub extends Frame implements ItemListener,FocusListener, WindowList
 
 	private void init() {
 		this.setLayout(flow);
-		year.add("³âµµ");
+		year.add("ï¿½âµµ");
 		for(int i=1970;i<=2060;i++)
 			year.add(String.valueOf(i));
-		month.add("¿ù");
+		month.add("ï¿½ï¿½");
 		for(int i=1;i<=12;i++)
 			month.add(String.valueOf(i));
-		day.add("ÀÏ");
+		day.add("ï¿½ï¿½");
 		
 		this.add(year);
 		this.add(month);
@@ -77,7 +78,7 @@ class Exam02_sub extends Frame implements ItemListener,FocusListener, WindowList
 		}else if(e.getSource()==month){
 			int index = month.getSelectedIndex();
 			day.removeAll();
-			day.add("ÀÏ");
+			day.add("ï¿½ï¿½");
 			for(int i=1;i<=day1[index-1];i++)
 				day.add(String.valueOf(i));		
 			day.requestFocus();

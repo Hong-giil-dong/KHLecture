@@ -1,3 +1,4 @@
+package day20;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +18,7 @@ class Exam05_sub extends Frame implements ActionListener,
 	private TextField tf1 = new TextField(10);
 	private TextField tf2 = new TextField(10);
 	private Label lb = new Label("-");
-	private Button btn = new Button("È®ÀÎ");
+	private Button btn = new Button("È®ï¿½ï¿½");
 	public Exam05_sub(){
 		super();
 		this.init();
@@ -46,16 +47,16 @@ class Exam05_sub extends Frame implements ActionListener,
 		int age = 2017 - 
 				Integer.parseInt(tf1.getText().substring(0, 2))+1900;
 		if(age >= 20){
-			pan ="»ç¿ë°¡´É ÇÕ´Ï´Ù";
+			pan ="ï¿½ï¿½ë°¡ï¿½ï¿½ ï¿½Õ´Ï´ï¿½";
 			
 			
 		}else{
-			pan ="»ç¿ëºÒ°¡´É ÇÕ´Ï´Ù";
+			pan ="ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½";
 		}
 		final Dialog dlg = new Dialog(this, "OK",true);
 		dlg.setLayout(new BorderLayout());
 		dlg.add("Center", new Label(pan, Label.CENTER));
-		Button bt = new Button("È®ÀÎ");
+		Button bt = new Button("È®ï¿½ï¿½");
 		dlg.setVisible(true);
 		
 		

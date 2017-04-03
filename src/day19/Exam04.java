@@ -1,4 +1,4 @@
-package kr.or.iei.event;
+package day19;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -23,13 +23,13 @@ class Exam04_sub extends Frame implements ActionListener{
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
 	
-	private Button btn1 = new Button("°è»ê");
-	//private Button btn2 = new Button("¹öÆ°2");
-	private Label lbKor = new Label("±¹¾î",Label.RIGHT);
-	private Label lbEng = new Label("¿µ¾î",Label.RIGHT);
-	private Label lbMat = new Label("¼öÇÐ",Label.RIGHT);
-	private Label lbTot = new Label("ÃÑÁ¡",Label.CENTER);
-	private Label lbAve = new Label("Æò±Õ",Label.CENTER);
+	private Button btn1 = new Button("ï¿½ï¿½ï¿½");
+	//private Button btn2 = new Button("ï¿½ï¿½Æ°2");
+	private Label lbKor = new Label("ï¿½ï¿½ï¿½ï¿½",Label.RIGHT);
+	private Label lbEng = new Label("ï¿½ï¿½ï¿½ï¿½",Label.RIGHT);
+	private Label lbMat = new Label("ï¿½ï¿½ï¿½ï¿½",Label.RIGHT);
+	private Label lbTot = new Label("ï¿½ï¿½ï¿½ï¿½",Label.CENTER);
+	private Label lbAve = new Label("ï¿½ï¿½ï¿½",Label.CENTER);
 	private Label lbTot_jum = new Label("0",Label.CENTER);
 	private Label lbAve_jum = new Label("o",Label.CENTER);
 	
@@ -38,9 +38,9 @@ class Exam04_sub extends Frame implements ActionListener{
 	private TextField tfMat = new TextField(5);
 	
 	public Exam04_sub(){
-		super("Á¦¸ñÁÙ");
-		this.init(); //»ç¿ëÀÚ Á¤ÀÇ ¸Þ¼Òµå - È­¸é±¸¼º
-		this.start(); // »ç¿ëÀÚ Á¤ÀÇ ¸Þ¼Òµå - Event or Thread
+		super("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		this.init(); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ - È­ï¿½é±¸ï¿½ï¿½
+		this.start(); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ - Event or Thread
 		this.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = this.getSize();
@@ -51,10 +51,10 @@ class Exam04_sub extends Frame implements ActionListener{
 		this.setLocation(xpos, ypos);
 		this.setVisible(true);
 	}
-	private void init() { //È­¸é±¸¼º
+	private void init() { //È­ï¿½é±¸ï¿½ï¿½
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
-		//this.add("North", "Á¡¼öÀÔ·Â");
+		//this.add("North", "ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½");
 		Panel p = new Panel(new GridLayout(3,2,5,5));
 		Panel p_Kor = new Panel(new FlowLayout(FlowLayout.LEFT));
 		Panel p_Eng = new Panel(new FlowLayout(FlowLayout.LEFT));
@@ -89,7 +89,7 @@ class Exam04_sub extends Frame implements ActionListener{
 		
 		
 	}
-	private void start() { //Thread, Event ¼³Á¤
+	private void start() { //Thread, Event ï¿½ï¿½ï¿½ï¿½
 		btn1.addActionListener(this);
 		//btn2.addActionListener(this);
 		

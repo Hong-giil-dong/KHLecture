@@ -1,4 +1,4 @@
-package kr.or.iei.homework;
+package day18;
 
 
 import java.awt.*;
@@ -6,31 +6,31 @@ import java.awt.event.*;
 import java.io.*;
 
 class BoardSub extends Frame implements ActionListener, WindowListener {
-	private Label list_lb = new Label("±Û¸ñ·Ï!");
-	private Label read_lb = new Label("±Ûº¸±â!");
+	private Label list_lb = new Label("ï¿½Û¸ï¿½ï¿½!");
+	private Label read_lb = new Label("ï¿½Ûºï¿½ï¿½ï¿½!");
 	private List list_li = new List(10, false);
 	private TextArea read_ta = new TextArea();
-	private Button write_bt = new Button("±Û¾²±â");
-	private Button refresh_bt = new Button("»õ·Î°íÄ§");
-	private Button edit_bt = new Button("¼öÁ¤");
-	private Button delete_bt = new Button("»èÁ¦");
-	private Button end_bt = new Button("Á¾·á");
+	private Button write_bt = new Button("ï¿½Û¾ï¿½ï¿½ï¿½");
+	private Button refresh_bt = new Button("ï¿½ï¿½ï¿½Î°ï¿½Ä§");
+	private Button edit_bt = new Button("ï¿½ï¿½ï¿½ï¿½");
+	private Button delete_bt = new Button("ï¿½ï¿½ï¿½ï¿½");
+	private Button end_bt = new Button("ï¿½ï¿½ï¿½ï¿½");
 
-	private Dialog write_dlg = new Dialog(this, "±Û¾²±â", true);
-	private Label dlg_toptitle_lb = new Label("±Û¾²±â", Label.CENTER);
-	private Label dlg_title_lb = new Label("±ÛÁ¦¸ñ : ", Label.RIGHT);
-	private Label dlg_author_lb = new Label("ÀÛ¼ºÀÚ : ", Label.RIGHT);
-	private Label dlg_attach_lb = new Label("Ã·ºÎÆÄÀÏ : ", Label.RIGHT);
+	private Dialog write_dlg = new Dialog(this, "ï¿½Û¾ï¿½ï¿½ï¿½", true);
+	private Label dlg_toptitle_lb = new Label("ï¿½Û¾ï¿½ï¿½ï¿½", Label.CENTER);
+	private Label dlg_title_lb = new Label("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ", Label.RIGHT);
+	private Label dlg_author_lb = new Label("ï¿½Û¼ï¿½ï¿½ï¿½ : ", Label.RIGHT);
+	private Label dlg_attach_lb = new Label("Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ", Label.RIGHT);
 	private TextField dlg_title_tf = new TextField();
 	private TextField dlg_author_tf = new TextField();
 	private TextField dlg_attach_tf = new TextField();
 	private TextArea dlg_write_ta = new TextArea();
-	private Button dlg_attach_bt = new Button("Ã£¾Æº¸±â");
-	private Button dlg_register_bt = new Button("µî·Ï");
-	private Button dlg_cancel_bt = new Button("Ãë¼Ò");
+	private Button dlg_attach_bt = new Button("Ã£ï¿½Æºï¿½ï¿½ï¿½");
+	private Button dlg_register_bt = new Button("ï¿½ï¿½ï¿½");
+	private Button dlg_cancel_bt = new Button("ï¿½ï¿½ï¿½");
 
 	public BoardSub() {
-		super("°Ô½ÃÆÇ!");
+		super("ï¿½Ô½ï¿½ï¿½ï¿½!");
 		this.init();
 		this.start();
 		this.setSize(500, 500);
@@ -98,7 +98,7 @@ class BoardSub extends Frame implements ActionListener, WindowListener {
 		this.addWindowListener(this);
 		refresh_bt.addActionListener(this);
 		end_bt.addActionListener(this);
-		list_li.addActionListener(this); // ±ÛÀÐ±â.
+		list_li.addActionListener(this); // ï¿½ï¿½ï¿½Ð±ï¿½.
 		edit_bt.addActionListener(this);
 		delete_bt.addActionListener(this);
 	}
@@ -112,7 +112,7 @@ class BoardSub extends Frame implements ActionListener, WindowListener {
 			write_dlg.setLocation(xpos, ypos);
 			write_dlg.setVisible(true);
 		} else if (e.getSource() == dlg_attach_bt) {
-			FileDialog fdlg = new FileDialog(this, "Ã£¾Æº¸±â", FileDialog.LOAD);
+			FileDialog fdlg = new FileDialog(this, "Ã£ï¿½Æºï¿½ï¿½ï¿½", FileDialog.LOAD);
 			fdlg.setVisible(true);
 			String dir = fdlg.getDirectory();
 			String file = fdlg.getFile();
@@ -129,9 +129,9 @@ class BoardSub extends Frame implements ActionListener, WindowListener {
 			String title = dlg_title_tf.getText();
 			String author = dlg_author_tf.getText();
 			if (title == null
-				|| author == null
-				|| title.trim().length() == 0
-				|| author.trim().length() == 0) {
+					|| author == null
+					|| title.trim().length() == 0
+					|| author.trim().length() == 0) {
 				return;
 			}
 			title = title.trim();
@@ -143,7 +143,7 @@ class BoardSub extends Frame implements ActionListener, WindowListener {
 			File file = new File(dir, title + " (" + author + ")");
 			try {
 				PrintWriter out =
-					new PrintWriter(new BufferedWriter(new FileWriter(file)));
+						new PrintWriter(new BufferedWriter(new FileWriter(file)));
 				String attach = dlg_attach_tf.getText();
 				if (attach == null || attach.trim().length() == 0) {
 					out.println("null");
@@ -191,63 +191,63 @@ class BoardSub extends Frame implements ActionListener, WindowListener {
 			}
 			read_ta.setText("");
 			read_ta.append(
-				"±ÛÁ¦¸ñ : " + data.substring(0, data.indexOf("(")) + "\n\n");
+					"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : " + data.substring(0, data.indexOf("(")) + "\n\n");
 			read_ta.append(
-				"ÀÛ¼ºÀÚ : "
-					+ data.substring(
-						data.indexOf("(") + 1,
-						data.lastIndexOf(")"))
-					+ "\n\n");
-			read_ta.append("Ã·ºÎÆÄÀÏ : " + attach + "\n\n");
-			read_ta.append("³»¿ë : " + contents);
+					"ï¿½Û¼ï¿½ï¿½ï¿½ : "
+							+ data.substring(
+									data.indexOf("(") + 1,
+									data.lastIndexOf(")"))
+							+ "\n\n");
+			read_ta.append("Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : " + attach + "\n\n");
+			read_ta.append("ï¿½ï¿½ï¿½ï¿½ : " + contents);
 		} else if (e.getSource() == edit_bt) {
-			if (edit_bt.getLabel().equals("¼öÁ¤")) {
-				edit_bt.setLabel("¼öÁ¤Áß");
+			if (edit_bt.getLabel().equals("ï¿½ï¿½ï¿½ï¿½")) {
+				edit_bt.setLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				read_ta.setEditable(true);
 			} else {
-				//ÀúÀåÇÏ°í...
+				//ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½...
 				String data = read_ta.getText().trim();
 				String title =
-					data.substring(
-						data.indexOf("±ÛÁ¦¸ñ : ") + 5,
-						data.indexOf("ÀÛ¼ºÀÚ : "));
+						data.substring(
+								data.indexOf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ") + 5,
+								data.indexOf("ï¿½Û¼ï¿½ï¿½ï¿½ : "));
 				String author =
-					data.substring(
-						data.indexOf("ÀÛ¼ºÀÚ : ") + 5,
-						data.indexOf("Ã·ºÎÆÄÀÏ : "));
+						data.substring(
+								data.indexOf("ï¿½Û¼ï¿½ï¿½ï¿½ : ") + 5,
+								data.indexOf("Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : "));
 				String attach =
-					data.substring(
-						data.indexOf("Ã·ºÎÆÄÀÏ : ") + 6,
-						data.indexOf("³»¿ë : "));
-				String contents = data.substring(data.indexOf("³»¿ë : ") + 4);
+						data.substring(
+								data.indexOf("Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ") + 6,
+								data.indexOf("ï¿½ï¿½ï¿½ï¿½ : "));
+				String contents = data.substring(data.indexOf("ï¿½ï¿½ï¿½ï¿½ : ") + 4);
 				File dir = new File("boardData");
 				File file =
-					new File(dir, title.trim() + " (" + author.trim() + ")");
+						new File(dir, title.trim() + " (" + author.trim() + ")");
 				try {
 					PrintWriter out =
-						new PrintWriter(
-							new BufferedWriter(new FileWriter(file)));
+							new PrintWriter(
+									new BufferedWriter(new FileWriter(file)));
 					out.println(attach);
 					out.println(contents);
 					out.close();
 				} catch (IOException ee) {
 				}
-				edit_bt.setLabel("¼öÁ¤");
+				edit_bt.setLabel("ï¿½ï¿½ï¿½ï¿½");
 				read_ta.setEditable(false);
 			}
 		} else if (e.getSource() == delete_bt) {
 			String data = read_ta.getText().trim();
 			String title =
-				data.substring(
-					data.indexOf("±ÛÁ¦¸ñ : ") + 5,
-					data.indexOf("ÀÛ¼ºÀÚ : "));
+					data.substring(
+							data.indexOf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ") + 5,
+							data.indexOf("ï¿½Û¼ï¿½ï¿½ï¿½ : "));
 			String author =
-				data.substring(
-					data.indexOf("ÀÛ¼ºÀÚ : ") + 5,
-					data.indexOf("Ã·ºÎÆÄÀÏ : "));
+					data.substring(
+							data.indexOf("ï¿½Û¼ï¿½ï¿½ï¿½ : ") + 5,
+							data.indexOf("Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : "));
 			File dir = new File("boardData");
 			File file =
-				new File(dir, title.trim() + " (" + author.trim() + ")");
+					new File(dir, title.trim() + " (" + author.trim() + ")");
 			file.delete();
 			read_ta.setText("");
 			String[] list = dir.list();

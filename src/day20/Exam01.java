@@ -1,3 +1,4 @@
+package day20;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,13 +14,13 @@ public class Exam01{
 
 class Exam01_sub extends Frame implements FocusListener, ActionListener{
 	private BorderLayout border = new BorderLayout();
-	private Label lb1 = new Label("ÀÌ¸§ : ", Label.RIGHT);
-	private Label lb2 = new Label("ÁÖ¹Î¹øÈ£ : ", Label.RIGHT);
+	private Label lb1 = new Label("ï¿½Ì¸ï¿½ : ", Label.RIGHT);
+	private Label lb2 = new Label("ï¿½Ö¹Î¹ï¿½È£ : ", Label.RIGHT);
 	private TextField tf1 = new TextField();
 	private TextField tf2 = new TextField();
 	private TextField tf3 = new TextField();
-	private Button bt1 = new Button("È®ÀÎ");
-	private Button bt2 = new Button("Ãë¼Ò");
+	private Button bt1 = new Button("È®ï¿½ï¿½");
+	private Button bt2 = new Button("ï¿½ï¿½ï¿½");
 	
 	Exam01_sub(){
 		super("Fous Listener");
@@ -62,7 +63,7 @@ class Exam01_sub extends Frame implements FocusListener, ActionListener{
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		// Focus¸¦ ¾òÀ»¶§ ¹ß»ý
+		// Focusï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 		
 		if(e.getSource()==tf2){
 			int x = tf1.getText().trim().length();
@@ -81,13 +82,13 @@ class Exam01_sub extends Frame implements FocusListener, ActionListener{
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		// Focus¸¦ ÀÒÀ»¶§ ¹ß»ý
+		// Focusï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Frame f = new Frame("È®ÀÎ");
+		Frame f = new Frame("È®ï¿½ï¿½");
 		if(e.getSource()==bt1){
 			int x = tf1.getText().trim().length();
 			if(x==0){

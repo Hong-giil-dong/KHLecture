@@ -1,4 +1,4 @@
-package kr.or.iei.event;
+package day19;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -24,16 +24,16 @@ class Exam05_sub extends Frame implements ActionListener{
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
 	
-	//¹öÆ°
-	private Button btn1 = new Button("ÀÔ·Â");
-	private Button btn2 = new Button("Ãâ·Â");
+	//ï¿½ï¿½Æ°
+	private Button btn1 = new Button("ï¿½Ô·ï¿½");
+	private Button btn2 = new Button("ï¿½ï¿½ï¿½");
 	
-	//·¹ÀÌºí
+	//ï¿½ï¿½ï¿½Ìºï¿½
 	private Label[] lb = new Label[5];
-	private String[] title={"±¹¾î","¿µ¾î","¼öÇÐ","ÃÑÁ¡","Æò±Õ"};
+	private String[] title={"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½"};
 	
 	
-	//ÅØ½ºÆ® ÇÊµå
+	//ï¿½Ø½ï¿½Æ® ï¿½Êµï¿½
 	private TextField[] tfkwa = new TextField[3];
 	
 	//List
@@ -47,9 +47,9 @@ class Exam05_sub extends Frame implements ActionListener{
 	private int[] ave = new int[5];
 	
 	public Exam05_sub(){
-		super("Á¦¸ñÁÙ");
-		this.init(); //»ç¿ëÀÚ Á¤ÀÇ ¸Þ¼Òµå - È­¸é±¸¼º
-		this.start(); // »ç¿ëÀÚ Á¤ÀÇ ¸Þ¼Òµå - Event or Thread
+		super("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		this.init(); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ - È­ï¿½é±¸ï¿½ï¿½
+		this.start(); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ - Event or Thread
 		this.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = this.getSize();
@@ -60,7 +60,7 @@ class Exam05_sub extends Frame implements ActionListener{
 		this.setLocation(xpos, ypos);
 		this.setVisible(true);
 	}
-	private void init() { //È­¸é±¸¼º
+	private void init() { //È­ï¿½é±¸ï¿½ï¿½
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
 		Panel pInput = new Panel(new GridLayout(3,2,5,5));
@@ -80,7 +80,7 @@ class Exam05_sub extends Frame implements ActionListener{
 		
 		
 	}
-	private void start() { //Thread, Event ¼³Á¤
+	private void start() { //Thread, Event ï¿½ï¿½ï¿½ï¿½
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 		

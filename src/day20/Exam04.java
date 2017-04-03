@@ -1,3 +1,4 @@
+package day20;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,7 +10,7 @@ public class Exam04 {
 
 class Exam04_sub extends Frame implements MouseListener {
 	
-	private Button btn = new Button("´­·¯ºÁ");
+	private Button btn = new Button("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 	public Exam04_sub(){
 		super();
 		this.init();
@@ -30,25 +31,25 @@ class Exam04_sub extends Frame implements MouseListener {
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("¹öÆ°À» Å¬¸¯");
+		System.out.println("ï¿½ï¿½Æ°ï¿½ï¿½ Å¬ï¿½ï¿½");
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		System.out.println("¹öÆ°À» ´©¸§");
+		System.out.println("ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		System.out.println("¹öÆ°¿¡¼­ ¼Õ¶À");
+		System.out.println("ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ï¿½Õ¶ï¿½");
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		System.out.println("ÇØ´ç À§Ä¡·Î µé¾î¿È");
+		System.out.println("ï¿½Ø´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		btn.setLocation((int)(Math.random() * 400)-80, 
 				(int)(Math.random()* 400 - 30));
 		
@@ -56,7 +57,7 @@ class Exam04_sub extends Frame implements MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		System.out.println("¹üÀ§¸¦ ¹þ¾î³²");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³²");
 		
 	}
 	

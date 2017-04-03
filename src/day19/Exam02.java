@@ -1,9 +1,5 @@
-package kr.or.iei.event;
+package day19;
 import java.awt.BorderLayout;
-/*
- * °´Ã¼ Á¤ÀÇ À¯Çü 
- * - Listener¸¦ ±¸ÇöÇÏ°Å³ª Adapter¸¦ »ó¼Ó¹ŞÀº ÀÓÀÇÀÇ Å¬·¡½º »ı¼º¹ı
- */
 import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -23,27 +19,27 @@ public class Exam02 {
 class Exam02_sub {
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
-	
+
 	Frame f = new Frame();
-	Button btn1 = new Button("¹öÆ°1");
-	Button btn2 = new Button("¹öÆ°2");
-	Label lb1 = new Label("°á°ú : ÇöÀç ´©¸¥ ¹öÆ°ÀÌ ¾ø½À´Ï´Ù.",Label.CENTER);
-	
+	Button btn1 = new Button("ë²„íŠ¼1");
+	Button btn2 = new Button("ë²„íŠ¼2");
+	Label lb1 = new Label("ë¼ë²¨ : ë¼ë²¨ ì„¼í„°",Label.CENTER);
+
 	public Exam02_sub(){
-		//super("Á¦¸ñÁÙ");
-		this.init(); //»ç¿ëÀÚ Á¤ÀÇ ¸Ş¼Òµå - È­¸é±¸¼º
-		this.start(); // »ç¿ëÀÚ Á¤ÀÇ ¸Ş¼Òµå - Event or Thread
+		//super("");
+		this.init();
+		this.start(); 
 		f.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = f.getSize();
-		
+
 		xpos = (int)(dimen1.getWidth() / 2 - dimen2.getWidth()/2);
 		ypos = (int)(dimen1.getHeight() / 2 - dimen2.getHeight()/2);
-		
+
 		f.setLocation(xpos, ypos);
 		f.setVisible(true);
 	}
-	private void init() { //È­¸é±¸¼º
+	private void init() {
 		BorderLayout border = new BorderLayout();
 		f.setLayout(border);
 		f.add("North", lb1);
@@ -51,39 +47,36 @@ class Exam02_sub {
 		p.add(btn1);
 		p.add(btn2);
 		f.add("Center", p);
-		
-		
-		
+
+
+
 	}
-	private void start() { //Thread, Event ¼³Á¤
+	private void start() {
 		ActionDefine ad = new ActionDefine();
-		btn1.addActionListener(ad);
+		btn1.addActionListener(ad); //adê°ì²´ì—ì„œ ì•¡ì…˜ë¦¬ìŠ¤ë„ˆ ì¸í„°í˜ì´ìŠ¤ë¥¼ ì„í”Œë¦¬ë¨¼íŠ¸í–ˆìœ¼ë¯€ë¡œ ì‚¬ìš©ê°€ëŠ¥ 
 		btn2.addActionListener(ad);
-		
+
 	}
 }
 
-class ActionDefine implements ActionListener{
-
-	Exam02 ex = new Exam02();
-
-	
+class ActionDefine implements ActionListener{ //ì•¡ì…˜ë¦¬ìŠ¤ë„ˆ ì¸í„°í˜ì´ìŠ¤ë¥¼ ì„í”Œë¦¬ë¨¼íŠ¸í•¨
+	//Exam02 ex = new Exam02();
 	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getActionCommand()=="¹öÆ°1"){
-			System.out.println("°á°ú : ¹öÆ°1À» ´©¸£¼Ì½À´Ï´Ù.");
-			
+
+		if(e.getActionCommand()=="ë²„íŠ¼1"){ // ë²„íŠ¼ì„ ëˆŒë €ì„ë•Œ ë²„íŠ¼ ê°ì²´ì˜ ì¶œë ¥ëœ ë§¤ê°œë³€ìˆ˜ ê°’ê³¼ ë¹„êµ
+			System.out.println("ì¶œë ¥ : ë²„íŠ¼1ì„ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤");
+
 			return;
-		}else if(e.getActionCommand()=="¹öÆ°2"){
-			System.out.println("°á°ú : ¹öÆ°2À» ´©¸£¼Ì½À´Ï´Ù.");
-			//lb1.setText("°á°ú : ¹öÆ°2À» ´©¸£¼Ì½À´Ï´Ù.");
-			
+		}else if(e.getActionCommand()=="ë²„íŠ¼2"){
+			System.out.println("ì¶œë ¥ : ë²„íŠ¼2ë¥¼ ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤");
+			//lb1.setText("ï¿½ï¿½ï¿½ : ï¿½ï¿½Æ°2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ï´ï¿½.");
+			return;
 		}
-		
-		System.out.println(e.getActionCommand()=="¹öÆ°1");
+
+		System.out.println(e.getActionCommand()=="ë²„íŠ¼1");
 		return;
 	}
-	
+
 }
 
 

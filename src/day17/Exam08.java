@@ -13,7 +13,7 @@ class Exam08_sub extends Frame{
 	private int xpos, ypos;
 	
 	public Exam08_sub(){
-		super("Chat Window");
+		super("Chat Window"); // 프레임 제목 설정
 		this.init();
 		this.start();
 		this.setSize(500,320);
@@ -28,47 +28,43 @@ class Exam08_sub extends Frame{
 	
 	
 	public void init(){
-		BorderLayout border = new BorderLayout();
-		this.setLayout(border);
-		//������Ʈ ����
-		Label lb1 = new Label("gurum�� ȯ���մϴ�.");
+		BorderLayout border = new BorderLayout(); //  보더 레이아웃 객체 생성
+		this.setLayout(border); // 보더 레이아웃 객체를 프레임에 삽입
+		
+		//각종 버튼 필드 리스트 라벨 객체 생성
+		Label lb1 = new Label("Chat Program");
 		Label lb2 = new Label("Chat - list");
 		TextArea ta = new TextArea(12,35);
 		TextField tf = new TextField();
 		List list = new List();
-		Button btn1 = new Button("�ӼӸ�");
-		Button btn2 = new Button("����");
-		Button btn3 = new Button("����");
-		Button btn4 = new Button("�󼼺���");
+		Button btn1 = new Button("하이");
+		Button btn2 = new Button("잘가");
+		Button btn3 = new Button("뭐야");
+		Button btn4 = new Button("왜");
 		
-		//���̾ƿ��� �˸°� ���� ������Ʈ�� �ٿ� �ش�.
-		//North
-		this.add("North", lb1);
-		lb1.setAlignment(Label.CENTER);
+		this.add("North", lb1); // 보더레이아웃 객체 북쪽에 라벨1 추가 
+		lb1.setAlignment(Label.CENTER); // 북쪽에 있는 라벨1의 위치를 그중에서도 가운데로 잡아줌
 		
+		Panel p1 = new Panel(new BorderLayout()); // 보더레이아웃객체를 만들고 그것을 새로운 패널 p1객체에 삽입
+		p1.add("North",ta); // 패널p1객체 북쪽에 텍스트에리아 객체 삽입
+		p1.add("South",tf); // 패널 p1객체 남쪽에 텍스트 필드 객체 삽입
+		this.add("Center",p1); // 보더레이아웃 객체의 가운데에 만들어진 패널 p1객체를 삽입 
 		
-		//center
-		Panel p1 = new Panel(new BorderLayout());
-		p1.add("North",ta);
-		p1.add("South",tf);
-		this.add("Center",p1);
+		Panel p2 = new Panel(new BorderLayout()); // 보더레이아웃객체를 만들고 그것을 새로운 패널 p2객체에 삽입
+		p2.add("North", lb2); // 패널p2객체 북쪽에 라벨2 객체 삽입
+		p2.add("Center", list); // 패널p2객체 중간에 리스트 객체 삽입
 		
-		//East
-		Panel p2 = new Panel(new BorderLayout());
-		p2.add("North", lb2);
-		p2.add("Center", list);
+		Panel p3 = new Panel(new GridLayout(4,1)); // 그리드레이아웃객체(4행 1열)를 만들고 그것을 새로운 패널 p3객체에 삽입 
+		p3.add(btn1); // 각 버튼을 패널p3객체에 삽입
+		p3.add(btn2); // 각 버튼을 패널p3객체에 삽입
+		p3.add(btn3); // 각 버튼을 패널p3객체에 삽입
+		p3.add(btn4); // 각 버튼을 패널p3객체에 삽입
 		
-		Panel p3 = new Panel(new GridLayout(4,1));
-		p3.add(btn1);
-		p3.add(btn2);
-		p3.add(btn3);
-		p3.add(btn4);
+		p2.add("South", p3); // 패널 p2객체 남쪽에 패널 p3객체 삽입
 		
-		p2.add("South", p3);
+		this.add("East", p2); // 최종적으로 보더레이아웃의 동쪽에 패널p2객체 삽입 
 		
-		this.add("East", p2);
-		
-		this.setFont(new Font("TimesRoman", Font.BOLD, 15));
+		this.setFont(new Font("TimesRoman", Font.BOLD, 15)); // 프레임 전체의 폰트를 설정
 		
 		
 		

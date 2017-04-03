@@ -6,30 +6,29 @@ public class Exam11 {
 	public static void main(String[] ar){
 		Exam11_sub ex = new Exam11_sub();
 	}
-
 }
 
 class Exam11_sub extends Frame{
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
 	
-	private TextArea ta = new TextArea("¾à°£ÀÇ ½Ã°£ÈÄ¿¡ Ç¥½Ã");
+	private TextArea ta = new TextArea("í…ìŠ¤íŠ¸ì—ë¦¬ì•„");
 	
-	private PopupMenu pm = new PopupMenu("My popup"); //MenuBar¿Í µ¿ÀÏ ¼º°İ
-	private MenuItem copy = new MenuItem("º¹»ç");
-	private MenuItem cut = new MenuItem("Àß¶ó³»±â");
-	private MenuItem past = new MenuItem("ºÙ¿©³Ö±â");
-	private Menu align = new Menu("Á¤·Ä");
-	private CheckboxMenuItem asize = new CheckboxMenuItem("Å©±â¼ø");
-	private CheckboxMenuItem aname = new CheckboxMenuItem("ÀÌ¸§¼ø");
-	private CheckboxMenuItem aauto = new CheckboxMenuItem("ÀÚµ¿Á¤·Ä",true);
+	private PopupMenu pm = new PopupMenu("My popup"); //íŒì—…ë©”ë‰´ ê°ì²´ ìƒì„±
+	private MenuItem copy = new MenuItem("copy");
+	private MenuItem cut = new MenuItem("cut");
+	private MenuItem past = new MenuItem("past");
+	private Menu align = new Menu("align");
+	private CheckboxMenuItem asize = new CheckboxMenuItem("asize");
+	private CheckboxMenuItem aname = new CheckboxMenuItem("aname");
+	private CheckboxMenuItem aauto = new CheckboxMenuItem("aauto",true);
 	
 	
 	
 	public Exam11_sub(){
-		super("Á¦¸ñÁÙ");
-		this.init(); //»ç¿ëÀÚ Á¤ÀÇ ¸Ş¼Òµå - È­¸é±¸¼º
-		this.start(); // »ç¿ëÀÚ Á¤ÀÇ ¸Ş¼Òµå - Event or Thread
+		super("í…ŒìŠ¤íŠ¸");
+		this.init();
+		this.start();
 		this.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = this.getSize();
@@ -43,9 +42,7 @@ class Exam11_sub extends Frame{
 		try{
 			Thread.sleep(5000);
 		}catch(Exception e){}
-		pm.show(ta, 50, 10);
-		
-		
+		pm.show(ta, 50, 10); // ì•¡ì…˜ë¦¬ìŠ¤ë„ˆë¡œ íŒì—…ì°½ ë„ìš°ê¸° ê°€ëŠ¥!
 	}
 
 	private void init() {

@@ -8,23 +8,24 @@ public class Exam09 {
 	}
 }
 
+
 class Exam09_sub extends Frame {
 	private Dimension dim1, dim2;
 	private int xpos, ypos;
 	
-	private Dialog dlg1 = new Dialog(this, "Á¾¼ÓµÈ Dialog1", false);
-	private Dialog dlg2 = new Dialog(this, "Á¾¼ÓµÈ Dialog2", true);
+	private Dialog dlg1 = new Dialog(this, "Dialog1", false); // ë‹¤ì´ì–¼ë¡œê·¸ ì•Œë¦¼ì°½ falseì´ë¯€ë¡œ ë‹¤ë¥¸ë°ë¥¼ í´ë¦­ ê°€ëŠ¥
+	private Dialog dlg2 = new Dialog(this, "Dialog2", true); // ë‹¤ì´ì–¼ë¡œê·¸ ì•Œë¦¼ì°½ trueì´ë¯€ë¡œ ë‹¤ë¥¸ë°ë¥¼ í´ë¦­ ë¶ˆê°€ëŠ¥
 	
-	private Label lb1 = new Label("Á¾¼ÓµÈ Dialog1 ÀÔ´Ï´Ù.", Label.CENTER);
-	private Label lb2 = new Label("Á¾¼ÓµÈ Dialog2 ÀÔ´Ï´Ù.", Label.CENTER);
+	private Label lb1 = new Label("Dialog1", Label.CENTER);
+	private Label lb2 = new Label("Dialog2", Label.CENTER);
 	
-	private FileDialog fdlg1 = new FileDialog(this, "¿­±â", FileDialog.SAVE);
+	private FileDialog fdlg1 = new FileDialog(this, "íŒŒì¼", FileDialog.SAVE); // íŒŒì¼ ë‹¤ì´ì–¼ë¡œê·¸ , ì„¸ì´ë¸Œ ëª©ì 
 	
 	
 	public Exam09_sub(){
-		super("Á¦¸ñÁÙ");
-		this.init(); //»ç¿ëÀÚ Á¤ÀÇ ¸Ş¼Òµå - È­¸é±¸¼º
-		this.start(); // »ç¿ëÀÚ Á¤ÀÇ ¸Ş¼Òµå - Event or Thread
+		super("ë‹¤ì´ì–¼ë¡œê·¸ í…ŒìŠ¤íŠ¸");
+		this.init();
+		this.start();
 		this.setSize(900, 600);
 		dim1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dim2 = this.getSize();
@@ -36,15 +37,15 @@ class Exam09_sub extends Frame {
 		this.setVisible(true);
 		
 		try{
-			Thread.sleep(6000);
+			Thread.sleep(2000);
 		}catch(Exception e){
 			System.err.println("Error = "+ e.toString());
 			e.printStackTrace();
 		}
 		fdlg1.setVisible(true);
-		lb1.setText(fdlg1.getDirectory());
-		lb2.setText(fdlg1.getFile());
-		/*
+		lb1.setText(fdlg1.getDirectory()); // fdlg1ì˜ getdirectoryë©”ì†Œë“œ ì‹¤í–‰í•´ì„œ ë¦¬í„´ëœ ê°’ìœ¼ë¡œ ë¼ë²¨ì˜ í…ìŠ¤íŠ¸ ë³€ê²½ 
+		lb2.setText(fdlg1.getFile()); // fdlg1ì˜ getfileë©”ì†Œë“œ ì‹¤í–‰í•´ì„œ ë¦¬í„´ëœ ê°’ìœ¼ë¡œ ë¼ë²¨ì˜ í…ìŠ¤íŠ¸ ë³€ê²½
+		
 		dlg1.setVisible(true);
 		
 		try{
@@ -57,10 +58,10 @@ class Exam09_sub extends Frame {
 		try{Thread.sleep(6000);}catch(Exception e){}
 		dlg2.setVisible(false);
 		fdlg1.setVisible(true);
-		*/
 		
-		//this.setVisible(false); //È­¸é¿¡¼­ Áö¿öÁø´Ù.(Á¾·áX)
-		//this.dispose(); //¸Ş¸ğ¸® »ó¿¡¼­ »èÁ¦
+		
+		//this.setVisible(false); //È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.(ï¿½ï¿½ï¿½ï¿½X)
+		//this.dispose(); //ï¿½Ş¸ï¿½ ï¿½ó¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 		//System.exit(0);
 		
 	}
