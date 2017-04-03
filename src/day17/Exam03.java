@@ -12,7 +12,7 @@ class Exam03_sub extends Frame{
 	private int xpos, ypos;
 	
 	public Exam03_sub(){
-		super("? œëª?");
+		super("?ï¿½ï¿½ï¿½?");
 		this.init();
 		this.start();
 		this.setSize(400,500);
@@ -35,10 +35,12 @@ class Exam03_sub extends Frame{
 			if(i<9){
 				btn[i] = new Button(String.valueOf(i+1));
 				btn[i].setFont(font);
+				this.add(btn[i]);
 				
 			}else{
 				btn[i] = new Button(str[i-9]);
 				btn[i].setFont(font);
+				this.add(btn[i]);
 				
 			}
 			this.add(btn[i]);
