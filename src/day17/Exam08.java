@@ -65,7 +65,8 @@ class Exam08_sub extends Frame{
 		this.add("East", p2); // 최종적으로 보더레이아웃의 동쪽에 패널p2객체 삽입 
 		
 		this.setFont(new Font("TimesRoman", Font.BOLD, 15)); // 프레임 전체의 폰트를 설정
-		
+		Font ft = new Font("TimesRoman", Font.BOLD, 15);
+		this.setFont(ft);
 		
 		
 			

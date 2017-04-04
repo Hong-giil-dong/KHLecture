@@ -90,12 +90,8 @@ class Exam09_sub extends Frame {
 		
 		this.add("North", lb1);
 		this.add("South", lb2);
-		
-		
-		
-		
-		
 	}
+	
 	void start(){
 		
 	}

@@ -39,11 +39,10 @@ class Exam01_sub extends Frame {
 	
 	private void start() {
 		btn.addActionListener(new ActionListener() { // 액션리스너 메소드를 생성하고 그것을 btn객체에 추가시킴
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {//메소드 안에 메소드, 버튼 클릭이 감지되면 안의 내용이 실행됨
 				// TODO Auto-generated method stub
-				System.out.println("종료");
+				//System.out.println("종료");
 				System.exit(0);
 			}
 		});
