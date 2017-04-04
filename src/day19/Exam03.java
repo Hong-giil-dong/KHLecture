@@ -11,9 +11,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
- * ���� Ŭ������ Listener�� �����ϴ� ���
- */
 public class Exam03 {
 	public static void main(String[] ar){
 		Exam03_sub ex = new Exam03_sub();
@@ -24,14 +21,14 @@ class Exam03_sub extends Frame implements ActionListener{
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
 	
-	private Button btn1 = new Button("��ư1");
-	private Button btn2 = new Button("��ư2");
-	private Label lb1 = new Label("��� : ���� ���� ��ư�� �����ϴ�.",Label.CENTER);
+	private Button btn1 = new Button("버튼1");
+	private Button btn2 = new Button("버튼2");
+	private Label lb1 = new Label("버튼 누르기 전",Label.CENTER);
 	
 	public Exam03_sub(){
-		super("������");
-		this.init(); //����� ���� �޼ҵ� - ȭ�鱸��
-		this.start(); // ����� ���� �޼ҵ� - Event or Thread
+		super("");
+		this.init(); 
+		this.start(); 
 		this.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = this.getSize();
@@ -42,7 +39,7 @@ class Exam03_sub extends Frame implements ActionListener{
 		this.setLocation(xpos, ypos);
 		this.setVisible(true);
 	}
-	private void init() { //ȭ�鱸��
+	private void init() { 
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
 		this.add("North", lb1);
@@ -54,7 +51,7 @@ class Exam03_sub extends Frame implements ActionListener{
 		
 		
 	}
-	private void start() { //Thread, Event ����
+	private void start() {
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 		
@@ -62,9 +59,9 @@ class Exam03_sub extends Frame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btn1){
-			lb1.setText("��� : ��ư1�� �����̽��ϴ�.");
+			lb1.setText("결과 : 버튼1을 눌렀습니다");
 		}else if(e.getSource()==btn2){
-			lb1.setText("��� : ��ư2�� �����̽��ϴ�.");
+			lb1.setText("결과 : 버튼2를 눌렀습니다");
 		}
 		
 	}

@@ -23,24 +23,24 @@ class Exam04_sub extends Frame implements ActionListener{
 	private Dimension dimen1, dimen2;
 	private int xpos, ypos;
 	
-	private Button btn1 = new Button("���");
+	private Button btn1 = new Button("계산");
 	//private Button btn2 = new Button("��ư2");
-	private Label lbKor = new Label("����",Label.RIGHT);
-	private Label lbEng = new Label("����",Label.RIGHT);
-	private Label lbMat = new Label("����",Label.RIGHT);
-	private Label lbTot = new Label("����",Label.CENTER);
-	private Label lbAve = new Label("���",Label.CENTER);
+	private Label lbKor = new Label("국어",Label.RIGHT);
+	private Label lbEng = new Label("영어",Label.RIGHT);
+	private Label lbMat = new Label("수학",Label.RIGHT);
+	private Label lbTot = new Label("총점",Label.CENTER);
+	private Label lbAve = new Label("평균",Label.CENTER);
 	private Label lbTot_jum = new Label("0",Label.CENTER);
-	private Label lbAve_jum = new Label("o",Label.CENTER);
+	private Label lbAve_jum = new Label("0",Label.CENTER);
 	
 	private TextField tfKor = new TextField(5);
 	private TextField tfEng = new TextField(5);
 	private TextField tfMat = new TextField(5);
 	
 	public Exam04_sub(){
-		super("������");
-		this.init(); //����� ���� �޼ҵ� - ȭ�鱸��
-		this.start(); // ����� ���� �޼ҵ� - Event or Thread
+		super("성적 계산기");
+		this.init(); 
+		this.start();
 		this.setSize(300, 200);
 		dimen1 = Toolkit.getDefaultToolkit().getScreenSize();
 		dimen2 = this.getSize();
@@ -51,7 +51,7 @@ class Exam04_sub extends Frame implements ActionListener{
 		this.setLocation(xpos, ypos);
 		this.setVisible(true);
 	}
-	private void init() { //ȭ�鱸��
+	private void init() {
 		BorderLayout border = new BorderLayout();
 		this.setLayout(border);
 		//this.add("North", "�����Է�");
