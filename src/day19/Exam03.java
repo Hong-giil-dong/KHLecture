@@ -52,14 +52,14 @@ class Exam03_sub extends Frame implements ActionListener{
 		
 	}
 	private void start() {
-		btn1.addActionListener(this);
+		btn1.addActionListener(this); // 
 		btn2.addActionListener(this);
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btn1){
-			lb1.setText("결과 : 버튼1을 눌렀습니다");
+			lb1.setText("결과 : 버튼1을 눌렀습니다"); // 
 		}else if(e.getSource()==btn2){
 			lb1.setText("결과 : 버튼2를 눌렀습니다");
 		}
