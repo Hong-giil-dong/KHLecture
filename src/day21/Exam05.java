@@ -1,6 +1,5 @@
 package day21;
-
-package kr.or.iei.homework;
+//커밋 확인
 
 import java.awt.BorderLayout;
 import java.awt.Color;
