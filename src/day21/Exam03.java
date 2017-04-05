@@ -15,7 +15,7 @@ public class Exam03 {
 }
 
 class Exam03_sub extends JFrame{
-	private Container con;
+	private Container con; // 컨테이너 타입 변수 생성 
 	private GridLayout grid = new GridLayout(2,2,5,5);
 	private JToggleButton tb1 = new JToggleButton("1",true);
 	private JToggleButton tb2 = new JToggleButton("2",false);
