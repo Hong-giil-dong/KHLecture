@@ -1,4 +1,4 @@
-package day22;
+package kr.or.iei.homework;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,7 +13,15 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -30,7 +38,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
 
-class Display_Sub1 implements Serializable{ //ê°ì²´ì˜ ì§ë ¬í™”
+class Display_Sub1 implements Serializable{ //°´Ã¼ÀÇ Á÷·ÄÈ­
 	private String name;
 	private String jumin;
 	private String tel;
@@ -86,75 +94,75 @@ class Display_Sub extends JFrame
 {
 private Container con;
 private BorderLayout bl = new BorderLayout(5, 5);
-private JLabel jlb = new JLabel("<== ì´ê²ƒì„ ëˆ„ë¥´ë©´ ì „ì²´ë³´ê¸°ê°€ ë©ë‹ˆë‹¤.");
-private JButton jbt = new JButton("ì „ì²´ë³´ê¸°");
+private JLabel jlb = new JLabel("<== ÀÌ°ÍÀ» ´©¸£¸é ÀüÃ¼º¸±â°¡ µË´Ï´Ù.");
+private JButton jbt = new JButton("ÀüÃ¼º¸±â");
 private JTextArea jta = new JTextArea(15, 40);
 private JScrollPane jsp = new JScrollPane(jta);
-private JButton jbt1 = new JButton("ë“±ë¡");
-private JButton jbt2 = new JButton("ìˆ˜ì •");
-private JButton jbt3 = new JButton("ì‚­ì œ");
+private JButton jbt1 = new JButton("µî·Ï");
+private JButton jbt2 = new JButton("¼öÁ¤");
+private JButton jbt3 = new JButton("»èÁ¦");
 private JButton jbt4 = new JButton("Clear");
-private JButton jbt5 = new JButton("ì €ì¥");
-private JButton jbt6 = new JButton("ë¡œë“œ");
-private JButton jbt7 = new JButton("ì¢…ë£Œ");
+private JButton jbt5 = new JButton("ÀúÀå");
+private JButton jbt6 = new JButton("·Îµå");
+private JButton jbt7 = new JButton("Á¾·á");
 
-private JLabel lb = new JLabel("ì´ë¦„ : ", JLabel.RIGHT);
-private JLabel lb1 = new JLabel("ì£¼ë¯¼ë²ˆí˜¸ : ", JLabel.RIGHT);
-private JLabel lb2 = new JLabel("ì „í™”ë²ˆí˜¸ : ", JLabel.RIGHT);
-private JLabel lb3 = new JLabel("ì£¼ì†Œ : ", JLabel.RIGHT);
+private JLabel lb = new JLabel("ÀÌ¸§ : ", JLabel.RIGHT);
+private JLabel lb1 = new JLabel("ÁÖ¹Î¹øÈ£ : ", JLabel.RIGHT);
+private JLabel lb2 = new JLabel("ÀüÈ­¹øÈ£ : ", JLabel.RIGHT);
+private JLabel lb3 = new JLabel("ÁÖ¼Ò : ", JLabel.RIGHT);
 private JTextField tf = new JTextField(14);
 private JTextField tf1 = new JTextField(7);
 private JTextField tf2 = new JTextField(7);
 private JTextField tf3 = new JTextField(14);
 private JTextField tf4 = new JTextField(14);
 
-private JLabel alb = new JLabel("ê²€ìƒ‰ : ", JLabel.RIGHT);
+private JLabel alb = new JLabel("°Ë»ö : ", JLabel.RIGHT);
 private JTextField atf = new JTextField(7);
 private JTextField atf1 = new JTextField(7);
-private JButton abt = new JButton("ê²€ìƒ‰");
+private JButton abt = new JButton("°Ë»ö");
 private JTextArea ata = new JTextArea(5, 20);
 private JScrollPane ajsp = new JScrollPane(ata);
 private JButton abt1 = new JButton("<<");
 private JButton abt2 = new JButton(">>");
 
 private ImageIcon im = new ImageIcon("web.gif");
-private Vector vc = new Vector();//ì‚¬ìš©ì ë°ì´í„°ë¥¼ ë¬´í•œíˆ ì €ì¥...
-private int pos = 0; // ê²€ìƒ‰ëœ ë°ì´í„°ì˜ ìœ„ì¹˜ë²ˆì§¸ë¥¼ ê¸°ì–µ...
-private int pos1 = 0; //ìˆ˜ì •ë  ë°ì´í„°ì˜ ìœ„ì¹˜ë²ˆì§¸ë¥¼ ê¸°ì–µ...
+private Vector vc = new Vector();//»ç¿ëÀÚ µ¥ÀÌÅÍ¸¦ ¹«ÇÑÈ÷ ÀúÀå...
+private int pos = 0; // °Ë»öµÈ µ¥ÀÌÅÍÀÇ À§Ä¡¹øÂ°¸¦ ±â¾ï...
+private int pos1 = 0; //¼öÁ¤µÉ µ¥ÀÌÅÍÀÇ À§Ä¡¹øÂ°¸¦ ±â¾ï...
 private JFileChooser jfc = new JFileChooser("c://workspace//data");
 
-private JDialog jdlg = new JDialog(this, "ì‚­ì œ", true);
+private JDialog jdlg = new JDialog(this, "»èÁ¦", true);
 private Container condlg;
-private JLabel lbdlg = new JLabel("ì´ë¦„ : ", JLabel.RIGHT);
-private JLabel lbdlg1 = new JLabel("ì£¼ë¯¼ë²ˆí˜¸ : ", JLabel.RIGHT);
+private JLabel lbdlg = new JLabel("ÀÌ¸§ : ", JLabel.RIGHT);
+private JLabel lbdlg1 = new JLabel("ÁÖ¹Î¹øÈ£ : ", JLabel.RIGHT);
 private JTextField tfdlg = new JTextField(15);
 private JTextField tfdlg1 = new JTextField(7);
 private JTextField tfdlg2 = new JTextField(7);
-private JButton btdlg = new JButton("ì‚­ì œ");
-private JButton btdlg1 = new JButton("ì·¨ì†Œ");
+private JButton btdlg = new JButton("»èÁ¦");
+private JButton btdlg1 = new JButton("Ãë¼Ò");
 
-private JDialog ajdlg = new JDialog(this, "ìˆ˜ì •", true);
+private JDialog ajdlg = new JDialog(this, "¼öÁ¤", true);
 private Container acondlg;
-private JLabel albdlg = new JLabel("ì´ë¦„ : ", JLabel.RIGHT);
-private JLabel albdlg1 = new JLabel("ì£¼ë¯¼ë²ˆí˜¸ : ", JLabel.RIGHT);
+private JLabel albdlg = new JLabel("ÀÌ¸§ : ", JLabel.RIGHT);
+private JLabel albdlg1 = new JLabel("ÁÖ¹Î¹øÈ£ : ", JLabel.RIGHT);
 private JTextField atfdlg = new JTextField(15);
 private JTextField atfdlg1 = new JTextField(7);
 private JTextField atfdlg2 = new JTextField(7);
-private JButton abtdlg = new JButton("ìˆ˜ì •");
-private JButton abtdlg1 = new JButton("ì·¨ì†Œ");
+private JButton abtdlg = new JButton("¼öÁ¤");
+private JButton abtdlg1 = new JButton("Ãë¼Ò");
 
-private JDialog bjdlg = new JDialog(this, "ìˆ˜ì •", true);
+private JDialog bjdlg = new JDialog(this, "¼öÁ¤", true);
 private Container bcondlg;
-private JLabel blbdlg = new JLabel("ì´ë¦„ : ", JLabel.RIGHT);
-private JLabel blbdlg1 = new JLabel("ì£¼ë¯¼ë²ˆí˜¸ : ", JLabel.RIGHT);
-private JLabel blbdlg2 = new JLabel("ì „í™”ë²ˆí˜¸ : ", JLabel.RIGHT);
-private JLabel blbdlg3 = new JLabel("ì£¼ì†Œ : ", JLabel.RIGHT);
+private JLabel blbdlg = new JLabel("ÀÌ¸§ : ", JLabel.RIGHT);
+private JLabel blbdlg1 = new JLabel("ÁÖ¹Î¹øÈ£ : ", JLabel.RIGHT);
+private JLabel blbdlg2 = new JLabel("ÀüÈ­¹øÈ£ : ", JLabel.RIGHT);
+private JLabel blbdlg3 = new JLabel("ÁÖ¼Ò : ", JLabel.RIGHT);
 private JLabel btfdlg = new JLabel();
 private JLabel btfdlg1 = new JLabel();
 private JTextField btfdlg2 = new JTextField(15);
 private JTextField btfdlg3 = new JTextField(15);
-private JButton bbtdlg = new JButton("ìˆ˜ì •");
-private JButton bbtdlg1 = new JButton("ì·¨ì†Œ");
+private JButton bbtdlg = new JButton("¼öÁ¤");
+private JButton bbtdlg1 = new JButton("Ãë¼Ò");
 		
 public Display_Sub(String str){
 	super(str);
@@ -173,42 +181,42 @@ public Display_Sub(String str){
 }
 public void start() {
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	jbt7.addActionListener(this); //ì¢…ë£Œ ë²„íŠ¼
-	tf.addKeyListener(this); //ì´ë¦„ í•„ë“œ
-	tf1.addFocusListener(this); //ì£¼ë¯¼ë²ˆí˜¸ ì²«ë²ˆì§¸ í•„ë“œ
+	jbt7.addActionListener(this); //Á¾·á ¹öÆ°
+	tf.addKeyListener(this); //ÀÌ¸§ ÇÊµå
+	tf1.addFocusListener(this); //ÁÖ¹Î¹øÈ£ Ã¹¹øÂ° ÇÊµå
 	tf1.addKeyListener(this);
-	tf2.addFocusListener(this); //ì£¼ë¯¼ë²ˆí˜¸ ë‘ë²ˆì§¸ í•„ë“œ
+	tf2.addFocusListener(this); //ÁÖ¹Î¹øÈ£ µÎ¹øÂ° ÇÊµå
 	tf2.addKeyListener(this);
-	tf3.addFocusListener(this); //ì „í™”ë²ˆí˜¸ í•„ë“œ
+	tf3.addFocusListener(this); //ÀüÈ­¹øÈ£ ÇÊµå
 	tf3.addKeyListener(this);
-	tf4.addFocusListener(this); //ì£¼ì†Œ í•„ë“œ
+	tf4.addFocusListener(this); //ÁÖ¼Ò ÇÊµå
 	tf4.addKeyListener(this);
 	atf.addKeyListener(this);
 	atf1.addKeyListener(this);
 	atf1.addFocusListener(this);
-	jbt1.addActionListener(this); //ë“±ë¡
+	jbt1.addActionListener(this); //µî·Ï
 	jbt4.addActionListener(this); //Clear
-	jbt.addActionListener(this); //ì „ì²´ë³´ê¸°
-	abt.addActionListener(this); //ê²€ìƒ‰
-	abt1.addActionListener(this); //ì´ì „
-	abt2.addActionListener(this); //ë‹¤ìŒ
-	jbt5.addActionListener(this); //ì €ì¥
-	jbt6.addActionListener(this); //ë¡œë“œ
+	jbt.addActionListener(this); //ÀüÃ¼º¸±â
+	abt.addActionListener(this); //°Ë»ö
+	abt1.addActionListener(this); //ÀÌÀü
+	abt2.addActionListener(this); //´ÙÀ½
+	jbt5.addActionListener(this); //ÀúÀå
+	jbt6.addActionListener(this); //·Îµå
 	
-	jbt2.addActionListener(this); //ìˆ˜ì •
-	atfdlg1.addKeyListener(this); //ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸ì˜ ì£¼ë¯¼ í•„ë“œ1
-	atfdlg2.addKeyListener(this); //ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸ì˜ ì£¼ë¯¼ í•„ë“œ2
-	abtdlg1.addActionListener(this); //ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸ì˜ ì·¨ì†Œë²„íŠ¼
-	abtdlg.addActionListener(this); //ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸ì˜ ìˆ˜ì •ë²„íŠ¼
+	jbt2.addActionListener(this); //¼öÁ¤
+	atfdlg1.addKeyListener(this); //¼öÁ¤ ´ÙÀÌ¾ó·Î±×ÀÇ ÁÖ¹Î ÇÊµå1
+	atfdlg2.addKeyListener(this); //¼öÁ¤ ´ÙÀÌ¾ó·Î±×ÀÇ ÁÖ¹Î ÇÊµå2
+	abtdlg1.addActionListener(this); //¼öÁ¤ ´ÙÀÌ¾ó·Î±×ÀÇ Ãë¼Ò¹öÆ°
+	abtdlg.addActionListener(this); //¼öÁ¤ ´ÙÀÌ¾ó·Î±×ÀÇ ¼öÁ¤¹öÆ°
 	
-	bbtdlg.addActionListener(this); //ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸2ì˜ ìˆ˜ì •ë²„íŠ¼
-	bbtdlg1.addActionListener(this); //ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸2ì˜ ì·¨ì†Œë²„íŠ¼
+	bbtdlg.addActionListener(this); //¼öÁ¤ ´ÙÀÌ¾ó·Î±×2ÀÇ ¼öÁ¤¹öÆ°
+	bbtdlg1.addActionListener(this); //¼öÁ¤ ´ÙÀÌ¾ó·Î±×2ÀÇ Ãë¼Ò¹öÆ°
 	
-	jbt3.addActionListener(this); //ì‚­ì œ
-	tfdlg1.addKeyListener(this); //ì‚­ì œ ë‹¤ì´ì–¼ë¡œê·¸ ì£¼ë¯¼í•„ë“œ1
-	tfdlg2.addKeyListener(this); //ì‚­ì œ ë‹¤ì´ì–¼ë¡œê·¸ ì£¼ë¯¼í•„ë“œ2
-	btdlg1.addActionListener(this); //ì‚­ì œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ì·¨ì†Œ
-	btdlg.addActionListener(this); //ì‚­ì œ ë‹¤ì´ì–¼ë¡œê·¸ì˜ ì‚­ì œ
+	jbt3.addActionListener(this); //»èÁ¦
+	tfdlg1.addKeyListener(this); //»èÁ¦ ´ÙÀÌ¾ó·Î±× ÁÖ¹ÎÇÊµå1
+	tfdlg2.addKeyListener(this); //»èÁ¦ ´ÙÀÌ¾ó·Î±× ÁÖ¹ÎÇÊµå2
+	btdlg1.addActionListener(this); //»èÁ¦ ´ÙÀÌ¾ó·Î±×ÀÇ Ãë¼Ò
+	btdlg.addActionListener(this); //»èÁ¦ ´ÙÀÌ¾ó·Î±×ÀÇ »èÁ¦
 	//F:\work\Day22\src\kr\or\iei\homework
 	
 }
@@ -244,7 +252,7 @@ public void init(){
 	jbt3.setEnabled(false);
 	jbt4.setEnabled(false);
 	jbt5.setEnabled(false);
-	jp.setBorder(new TitledBorder(new SoftBevelBorder(SoftBevelBorder.RAISED), "ê°œì¸ì •ë³´í™•ì¸"));
+	jp.setBorder(new TitledBorder(new SoftBevelBorder(SoftBevelBorder.RAISED), "°³ÀÎÁ¤º¸È®ÀÎ"));
 	con.add("Center", jp);
 	JPanel jp3 = new JPanel(new GridLayout(2, 1, 3, 3));
 	JPanel jp4 = new JPanel(new BorderLayout());
@@ -263,8 +271,8 @@ public void init(){
 	jp6.add(tf3);
 	jp6.add(tf4);
 	jp4.add("Center", jp6);
-	jp4.setBorder(new TitledBorder(new SoftBevelBorder(SoftBevelBorder.RAISED), "ê°œì¸ì •ë³´"));
-	jp3.add(jp4);//ìƒë‹¨ë¶€
+	jp4.setBorder(new TitledBorder(new SoftBevelBorder(SoftBevelBorder.RAISED), "°³ÀÎÁ¤º¸"));
+	jp3.add(jp4);//»ó´ÜºÎ
 	JPanel jp8 = new JPanel(new BorderLayout());
 	JPanel jp9 = new JPanel(new BorderLayout());
 	jp9.add("West", alb);
@@ -285,15 +293,15 @@ public void init(){
 	abt.setEnabled(false);
 	abt1.setEnabled(false);
 	abt2.setEnabled(false);
-	jp8.setBorder(new TitledBorder(new SoftBevelBorder(SoftBevelBorder.RAISED), "ì •ë³´ê²€ìƒ‰"));
-	jp3.add(jp8);//í•˜ë‹¨ë¶€
+	jp8.setBorder(new TitledBorder(new SoftBevelBorder(SoftBevelBorder.RAISED), "Á¤º¸°Ë»ö"));
+	jp3.add(jp8);//ÇÏ´ÜºÎ
 	con.add("West", jp3);
 	jta.setEnabled(false);
 	ata.setEnabled(false);
 	jta.setDisabledTextColor(Color.black);
 	ata.setDisabledTextColor(Color.black);
 	
-	//ì‚­ì œ ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ êµ¬ì„±í•©ë‹ˆë‹¤.
+	//»èÁ¦ ´ÙÀÌ¾ó·Î±×¸¦ ±¸¼ºÇÕ´Ï´Ù.
 	condlg = jdlg.getContentPane();
 	condlg.setLayout(new BorderLayout());
 	JPanel jpdlg = new JPanel(new GridLayout(2, 1));
@@ -318,9 +326,9 @@ public void init(){
 	Dimension di1 = jdlg.getSize();
 	jdlg.setLocation((int)(di.getWidth() / 2 - di1.getWidth() / 2), 
 		(int)(di.getHeight() / 2 - di1.getHeight() / 2));
-	//ì‚­ì œ ë‹¤ì´ì–¼ë¡œê·¸ êµ¬ì„± ë...
+	//»èÁ¦ ´ÙÀÌ¾ó·Î±× ±¸¼º ³¡...
 	
-	//ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ êµ¬ì„±í•©ë‹ˆë‹¤.
+	//¼öÁ¤ ´ÙÀÌ¾ó·Î±×¸¦ ±¸¼ºÇÕ´Ï´Ù.
 	acondlg = ajdlg.getContentPane();
 	acondlg.setLayout(new BorderLayout());
 	JPanel ajpdlg = new JPanel(new GridLayout(2, 1));
@@ -345,9 +353,9 @@ public void init(){
 	Dimension adi1 = ajdlg.getSize();
 	ajdlg.setLocation((int)(adi.getWidth() / 2 - adi1.getWidth() / 2), 
 		(int)(adi.getHeight() / 2 - adi1.getHeight() / 2));
-	//ìˆ˜ì • ë‹¤ì´ì–¼ë¡œê·¸ êµ¬ì„± ë...
+	//¼öÁ¤ ´ÙÀÌ¾ó·Î±× ±¸¼º ³¡...
 	
-	//ìˆ˜ì • ë‘ë²ˆì§¸ ë‹¤ì´ì–¼ë¡œê·¸ êµ¬ì„±...
+	//¼öÁ¤ µÎ¹øÂ° ´ÙÀÌ¾ó·Î±× ±¸¼º...
 	bcondlg = bjdlg.getContentPane();
 	bcondlg.setLayout(new BorderLayout());
 	JPanel bjp = new JPanel(new GridLayout(4, 1));
@@ -373,11 +381,67 @@ public void init(){
 	Dimension bdi1 = bjdlg.getSize();
 	bjdlg.setLocation((int)(bdi.getWidth() / 2 - bdi1.getWidth() / 2), 
 		(int)(bdi.getHeight() / 2 - bdi1.getHeight() / 2));
-	//ìˆ˜ì • ë‘ë²ˆì§¸ ë‹¤ì´ì–¼ë¡œê·¸ êµ¬ì„±ë...
+	//¼öÁ¤ µÎ¹øÂ° ´ÙÀÌ¾ó·Î±× ±¸¼º³¡...
 }
 @Override
 public void focusGained(FocusEvent e) {
 	// TODO Auto-generated method stub
+	if(e.getSource()==tf1){
+		String str = tf.getText().trim();
+		if(str.length()==0){
+			tf.setText("");
+			tf.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource()==tf2){
+		String str = tf1.getText().trim();
+		if(str.length()==0){
+			tf1.setText("");
+			tf1.requestFocus();
+			return;
+		}
+		try{
+			int i = Integer.parseInt(str);
+		}catch(NumberFormatException ee){
+			tf1.setText("");
+			tf1.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource()==tf3){
+		String str = tf2.getText().trim();
+		if(str.length()==0){
+			tf2.setText("");
+			tf2.requestFocus();
+			return;
+		}
+		try{
+			int i = Integer.parseInt(str);
+		}catch(NumberFormatException ee){
+			tf2.setText("");
+			tf2.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource()==tf4){
+		String str = tf3.getText().trim();
+		if(str.length()==0){
+			tf3.setText("");
+			tf3.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource()==atf1){
+		String str = atf.getText().trim();
+		if(str.length()==6){
+			atf.setText("");
+			atf.requestFocus();
+			return;
+		}
+	}
+	
+	
 	
 }
 @Override
@@ -391,14 +455,183 @@ public void keyTyped(KeyEvent e) {
 	
 }
 @Override
-public void keyPressed(KeyEvent e) {
+public void keyPressed(KeyEvent e) {//Å°º¸µåÀÇ Å°°¡ ´­¸±¶§
 	// TODO Auto-generated method stub
+	//System.out.println(tf1.getText().trim().length());
+	if(e.getSource()==tf1){
+		if(tf1.getText().trim().length()==6){
+			tf2.requestFocus();
+			return;
+		}
+	}//tf1
+	else if(e.getSource()==tf2){
+		//System.out.println(tf1.getText().trim());
+		if(tf2.getText().trim().length()==6){
+			tf3.requestFocus();
+			return;
+		}
+	}//tf2
+	else if(e.getSource() == atf){
+		if(atf.getText().trim().length() == 6){
+			atf1.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource() == atf1){
+		if(atf1.getText().trim().length() == 7){
+			abt.setEnabled(true);
+			abt.requestFocus();
+			return;
+		}
+	}
 	
+	//»èÁ¦ ¼öÁ¤ ´ÙÀÌ¾ó ·Î±× ÀÌµ¿
+	//»èÁ¦ : tfdlg1, tfdlg2 »èÁ¦:atfdlg1, atfdlg2
+	else if(e.getSource() == tfdlg1){
+		if(tfdlg1.getText().trim().length() == 6){
+			tfdlg2.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource() == tfdlg2){
+		if(tfdlg2.getText().trim().length() == 7){
+			btdlg.setEnabled(true);
+			btdlg.requestFocus();
+			return;
+		}
+	}	
+	else if(e.getSource() == atfdlg1){
+		if(atfdlg1.getText().trim().length() == 6){
+			atfdlg2.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource() == atfdlg2){
+		if(atfdlg2.getText().trim().length() == 7){
+			abtdlg.setEnabled(true);
+			abtdlg.requestFocus();
+			return;
+		}
+	}
 }
 @Override
 public void keyReleased(KeyEvent e) {
 	// TODO Auto-generated method stub
+	if(e.getSource()==tf){
+		String str = tf.getText().trim();
+		if(str.length() != 0){
+			jbt4.setEnabled(true);
+			if(tf.getText().trim().length() != 0 &&
+				tf1.getText().trim().length() != 0 &&
+				tf2.getText().trim().length() != 0 &&
+				tf3.getText().trim().length() != 0 &&
+				tf4.getText().trim().length() != 0){
+				
+					jbt1.setEnabled(true);
+				}
+		}
+		else{
+			jbt1.setEnabled(false);
+			if(tf1.getText().trim().length() !=0 ||
+					tf2.getText().trim().length() !=0 ||
+					tf3.getText().trim().length() !=0 ||
+					tf4.getText().trim().length() !=0){
+				return;
+			}
+			jbt4.setEnabled(false);
+		}
+	}//tf
+	else if(e.getSource()==tf1){
+		if(tf1.getText().trim().length()==6){
+			tf2.requestFocus();
+			return;
+		}
+		if(tf1.getText().trim().length()==0){
+			jbt1.setEnabled(false);
+		}else{
+			if(tf.getText().trim().length() != 0 &&
+				tf1.getText().trim().length() != 0 &&
+				tf2.getText().trim().length() != 0 &&
+				tf3.getText().trim().length() != 0 &&
+				tf4.getText().trim().length() != 0){
+				jbt1.setEnabled(true);
+			}
+		}
+	}//tf1
+	else if(e.getSource() == tf2){
+		if(tf2.getText().trim().length() == 7){
+			tf3.requestFocus();
+			return;
+		}
+		if(tf2.getText().trim().length() == 0){
+			jbt1.setEnabled(false);
+		}
+		else{
+			if(tf.getText().trim().length() != 0 &&
+				tf1.getText().trim().length() != 0 &&
+				tf2.getText().trim().length() != 0 &&
+				tf3.getText().trim().length() != 0 &&
+				tf4.getText().trim().length() != 0){
+				jbt1.setEnabled(true);
+			}
+		}
+	}//tf2
+	else if(e.getSource() == tf3){
+		if(tf3.getText().trim().length() == 0){
+			jbt1.setEnabled(false);
+		}
+		else{
+			if(tf.getText().trim().length() != 0 &&
+				tf1.getText().trim().length() != 0 &&
+				tf2.getText().trim().length() != 0 &&
+				tf3.getText().trim().length() != 0 &&
+				tf4.getText().trim().length() != 0){
+				jbt1.setEnabled(true);
+			}
+		}
+	}//tf3
+	else if(e.getSource() == atf){
+		if(atf.getText().trim().length() == 6){
+			atf1.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource() == atf1){
+		if(atf1.getText().trim().length() == 7){
+			abt.setEnabled(true);
+			abt.requestFocus();
+			return;
+		}
+	}
+	//»èÁ¦ ´ÙÀÌ¾ó ·Î±× TextField(tfdlg1, tfdlg2)
+	else if(e.getSource() == tfdlg1){
+		if(tfdlg1.getText().trim().length() == 6){
+			tfdlg2.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource() == tfdlg2){
+		if(tfdlg2.getText().trim().length() == 7){
+			btdlg.setEnabled(true);
+			btdlg.requestFocus();
+			return;
+		}
+	}	
 	
+	//¼öÁ¤ ´ÙÀÌ¾ó ·Î±× TextField(atfdlg1, atfdlg2)
+	else if(e.getSource() == atfdlg1){
+		if(atfdlg1.getText().trim().length() == 6){
+			atfdlg2.requestFocus();
+			return;
+		}
+	}
+	else if(e.getSource() == atfdlg2){
+		if(atfdlg2.getText().trim().length() == 7){
+			abtdlg.setEnabled(true);
+			abtdlg.requestFocus();
+			return;
+		}
+	}
 }
 @Override
 public void actionPerformed(ActionEvent e) {
@@ -411,7 +644,7 @@ public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<13;i++)
 			jumin[i] = str.charAt(i) - 48; // '0'
 		
-		//ì£¼ë¯¼ë²ˆí˜¸ ê²€ì¦
+		//ÁÖ¹Î¹øÈ£ °ËÁõ
 		float hap = 0.0f;
 		float temp = 0.0f;
 		float temp1 = 0.0f;
@@ -432,15 +665,15 @@ public void actionPerformed(ActionEvent e) {
 			tf1.requestFocus();
 			return;
 		}
-		//ë“±ë¡ ì¤€ë¹„
+		//µî·Ï ÁØºñ
 		String a = tf.getText().trim();
 		String b = tf1.getText().trim() + tf2.getText().trim();
 		String c = tf3.getText().trim();
 		String d = tf4.getText().trim();
 		Display_Sub1 sss = new Display_Sub1(a, b, c, d);
-		vc.addElement(sss); //ê°ì²´ë¥¼ ë²¡í„°ì— ì €ì¥!
-		jta.setText("ì €ì¥ì´ ì˜ ë˜ì—ˆìŠµë‹ˆë‹¤.");
-		jta.append("í˜„ì¬" + vc.size() + "ëª…ì˜ ë°ì´í„°ê°€ ì¡´ì¬ í•©ë‹ˆë‹¤.");
+		vc.addElement(sss); //°´Ã¼¸¦ º¤ÅÍ¿¡ ÀúÀå!
+		jta.setText("ÀúÀåÀÌ Àß µÇ¾ú½À´Ï´Ù.");
+		jta.append("ÇöÀç" + vc.size() + "¸íÀÇ µ¥ÀÌÅÍ°¡ Á¸Àç ÇÕ´Ï´Ù.");
 		tf.setText("");
 		tf1.setText("");
 		tf2.setText("");
@@ -464,14 +697,273 @@ public void actionPerformed(ActionEvent e) {
 		tf.requestFocus();
 	}
 	else if(e.getSource()==jbt){
-		jta.setText("ì „ì²´ ì¸ì›ì˜ ê°œì¸ì •ë³´ ì…ë‹ˆë‹¤.\n");
-		jta.append("ì´ë¦„\tì£¼ë¯¼ë²ˆí˜¸\t\tì „í™”ë²ˆí˜¸\tì£¼ì†Œ\n");
+		jta.setText("ÀüÃ¼ ÀÎ¿øÀÇ °³ÀÎÁ¤º¸ ÀÔ´Ï´Ù.\n");
+		jta.append("ÀÌ¸§\tÁÖ¹Î¹øÈ£\t\tÀüÈ­¹øÈ£\tÁÖ¼Ò\n");
 		jta.append("==========================================\n");
-		//ì‹¤ì œ ì¶œë ¥ ë‚´ìš©
-		
+		//½ÇÁ¦ Ãâ·Â ³»¿ë
+		for(int i=0;i<vc.size();i++){
+			Display_Sub1 imsi = (Display_Sub1)vc.elementAt(i);
+			jta.append(imsi.getName()+"\t");
+			jta.append(imsi.getJumin()+"\t");
+			jta.append(imsi.getTel()+"\t");
+			jta.append(imsi.getAddr()+"\n");
+		}
+		jta.append("==========================================\n");
+		jta.append("ÃÑ " + vc.size() + "¸í");
 	}
+	else if(e.getSource()==abt){
+		String str = atf.getText().trim() + atf1.getText().trim();
+		int k = -1;
+		//¼øÂ÷ °Ë»ö
+		for(int i=0;i<vc.size();i++){
+			Display_Sub1 imsi = (Display_Sub1)vc.elementAt(i);
+			if(imsi.getJumin().equals(str)){
+				k=i;
+			}
+		}
 		
- }
+		if(k==-1){
+			ata.setText("±×·± ÁÖ¹Îµî·Ï ¹øÈ£´Â ¾ø½À´Ï´Ù.");
+			atf.setText("");
+			atf1.setText("");
+			abt.setEnabled(false);
+			atf.requestFocus();
+			return;
+			
+		}
+		pos = k; //Ã£Àº ÀÚ·áÀÇ À§Ä¡°ª
+		//°Ë»öÈÄ Ã£Àº °ª Ãâ·Â
+		view(pos);
+		//view1(k);
+		
+		if(vc.size()<=1){
+			abt1.setEnabled(false);
+			abt2.setEnabled(false);
+		}else{
+			if(pos==0){
+				abt1.setEnabled(false);
+				abt2.setEnabled(true);
+			}else if(pos == vc.size()-1){
+				abt1.setEnabled(true);
+				abt2.setEnabled(false);
+			}else{
+				abt1.setEnabled(true);
+				abt2.setEnabled(true);
+			}
+			
+		}
+		atf.setText("");
+		atf1.setText("");
+		abt.setEnabled(false);
+	}//abt
+	else if(e.getSource()==abt1){
+		pos--;
+		if(pos==0){
+			abt1.setEnabled(false);
+		}
+		abt2.setEnabled(true);
+		view(pos);
+	}//abt1
+	else if(e.getSource()==abt2){
+		pos++;
+		if(pos==vc.size()-1){
+			abt2.setEnabled(false);
+		}
+		abt1.setEnabled(true);
+		view(pos);
+	}//abt2
+	else if(e.getSource()==jbt5){ //ÀúÀå ´ÜÃß¸¦ ÀÌ¿ëÇÏ¿© ÆÄÀÏ ÀúÀå
+		jfc.showSaveDialog(this);
+		File file = jfc.getSelectedFile();
+		System.out.println(file);
+		try{
+			FileOutputStream fo = new FileOutputStream(file);
+			BufferedOutputStream bo = new BufferedOutputStream(fo);
+			ObjectOutputStream oos = new ObjectOutputStream(bo);
+			oos.writeObject(vc); //¹İµå½Ã Á÷·ÄÈ­ µÇ¾î ÀÖ¾î¾ß ÇÑ´Ù.
+			oos.close();
+			bo.close();
+			fo.close();
+		}catch(Exception ee){
+			System.err.println("Error = " + ee.toString());
+		}
+		jta.setText("ÀúÀå ¿Ï·á !\n");
+		jta.append(file + "ÀÇ ÀÌ¸§À¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù.");
+		
+	}//jbt5
+	else if(e.getSource()==jbt6){ //ÆÄÀÏ ºÒ·¯¿À±â
+		jfc.showOpenDialog(this);
+		File file = jfc.getSelectedFile();
+		try{
+			FileInputStream fi = new FileInputStream(file);
+			BufferedInputStream bi = new BufferedInputStream(fi);
+			ObjectInputStream ois = new ObjectInputStream(bi);
+			vc.clear();
+			vc = (Vector)ois.readObject();
+			ois.close();
+			bi.close();
+			fi.close();
+		}catch(Exception ee){
+			ee.printStackTrace();
+		}
+		jta.setText("ÆÄÀÏ ÀĞ±â ¿Ï·á !\n");
+		jta.append(file + "ÀÇ ÆÄÀÏ·ÎºÎÅÍ ÀĞ±â¸¦ ¿Ï·áÇÏ¿´½À´Ï´Ù.\n");
+		jta.append("ÃÑ µ¥ÀÌÅÍ °³¼ö : " + vc.size() + "°³");
+		
+		if(vc.size()>=1){
+			jbt.setEnabled(true);
+			jbt2.setEnabled(true);
+			jbt3.setEnabled(true);
+			jbt5.setEnabled(true);
+		}
+		
+	}//jbt6
+	else if(e.getSource()==jbt3){
+		jdlg.setVisible(true); //»èÁ¦ ´ÙÀÌ¾ó·Î±× Ã¢ È£Ãâ
+	}//jbt3
+	else if(e.getSource()==btdlg1){ //»èÁ¦ ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ Ãë¼Ò
+		tfdlg.setText("");
+		tfdlg1.setText("");
+		tfdlg2.setText("");
+		jdlg.setVisible(false);
+		
+	}//btdlg1
+	else if(e.getSource()==btdlg){ //»èÁ¦ ´ÙÀÌ¾ó±× Ã¢ÀÇ »èÁ¦ ¹öÆ°
+		String str = tfdlg.getText().trim();
+		String str1 = tfdlg1.getText().trim() + tfdlg2.getText().trim();
+		int kk= -1;
+		//»èÁ¦ÇÒ Á¤º¸ °Ë»ö
+		for(int i=0;i<vc.size();i++){
+			Display_Sub1 imsi = (Display_Sub1)vc.elementAt(i);
+			if(imsi.getName().equals(str) &&
+					imsi.getJumin().equals(str1)){
+				kk=i;
+			}
+		}
+		if(kk==-1){
+			jta.setText("»ç¿ëÀÚ°¡ Á¸Àç ÇÏÁö ¾Ê½À´Ï´Ù.");
+			jta.append("Á¤º¸ !!!!\n");
+			jta.append("ÀÌ¸§ : " + str +"\n");
+			jta.append("ÁÖ¹Î¹øÈ£ : " + str1.substring(0, 6) +" - " 
+					+str1.substring(6) + "\n");
+			jta.append("´Ù½Ã ½Ãµµ ÇÏ¼¼¿ä....");
+			tfdlg.setText("");
+			tfdlg1.setText("");
+			tfdlg2.setText("");
+			jdlg.setVisible(false);
+			return;
+		}
+		//½ÇÁ¦ Á¤º¸ÀÇ »èÁ¦
+		tfdlg.setText("");
+		tfdlg1.setText("");
+		tfdlg2.setText("");
+		jdlg.setVisible(false);
+		vc.removeElementAt(kk); //¹éÅÍÀÇ ½ÇÁ¦ Á¤º¸ »èÁ¦
+		jta.setText("´ÙÀ½ÀÇ »ç¿ëÀÚ¸¦ µ¥ÀÌÅÍ ÀúÀå¼Ò¿¡¼­ »èÁ¦ ÇÏ¿´½À´Ï´Ù.!!");
+		jta.append("Á¤º¸ !!!!\n");
+		jta.append("ÀÌ¸§ : " + str +"\n");
+		jta.append("ÁÖ¹Î¹øÈ£ : " + str1.substring(0, 6) +" - " 
+				+str1.substring(6) + "\n");
+		jta.append("ÇöÀç ³²Àº µ¥ÀÌÅÍ °³¼ö : " + vc.size() + "°³");
+		
+	}//btdlg
+	else if(e.getSource()==jbt2){ //¼öÁ¤ ´ÙÀÌ¾ó ·Î±×
+		//¼öÁ¤ÇÒ µ¥ÀÌÅÍ Á¤º¸ °Ë»ö
+		//´ÙÀÌ¾ó·Î±× : ajdlg, Ãë¼Ò : abtdlg1, ¼öÁ¤ : abtdlg
+		ajdlg.setVisible(true);
+	}
+	else if(e.getSource() == abtdlg1){
+		atfdlg.setText("");
+		atfdlg1.setText("");
+		atfdlg2.setText("");
+		ajdlg.setVisible(false);
+	}
+	else if(e.getSource() == abtdlg){
+		String str = atfdlg.getText().trim();
+		String str1 = atfdlg1.getText().trim() + atfdlg2.getText().trim();
+		int kk = -1;
+		for(int i = 0; i < vc.size(); i++){
+			Display_Sub1 imsi = (Display_Sub1)vc.elementAt(i);
+			if(imsi.getName().equals(str) && imsi.getJumin().equals(str1)){
+				kk = i;				
+			}
+		}
+		if(kk == -1){
+			jta.setText("»ç¿ëÀÚ Á¸Àç ÇÏÁö ¾Ê½À´Ï´Ù..\n");
+			jta.append("Á¤º¸ !!!\n");
+			jta.append("ÀÌ¸§ : " + str + "\n");
+			jta.append("ÁÖ¹Î¹øÈ£ : " + str1.substring(0, 6) + "-" + str1.substring(6) + "\n");
+			jta.append("´Ù½Ã ½Ãµµ ÇÏ¼¼¿ä... ^^");
+			atfdlg.setText("");
+			atfdlg1.setText("");
+			atfdlg2.setText("");
+			ajdlg.setVisible(false);
+			return;
+		}
+		//½ÇÁúÀûÀÎ ¼öÁ¤ ÀÛ¾÷ ¼öÇà ºÎºĞ
+		atfdlg.setText("");
+		atfdlg1.setText("");
+		atfdlg2.setText("");
+		ajdlg.setVisible(false);
+		pos1 = kk;
+		jta.setText("ÇØ´ç »ç¿ëÀÚ¸¦ Ã£¾Ò½À´Ï´Ù. ¼öÁ¤ÇÏ°Ú½À´Ï´Ù!");
+		Display_Sub1 imsi = (Display_Sub1)vc.elementAt(pos1);
+		btfdlg.setText(imsi.getName());
+		btfdlg1.setText(imsi.getJumin().substring(0, 6)+ " - " 
+		+ imsi.getJumin().substring(6));
+		btfdlg2.setText(imsi.getTel());
+		btfdlg3.setText(imsi.getAddr());
+		bjdlg.setVisible(true);
+	}//abtdlg
+	else if(e.getSource()==bbtdlg){ //¼öÁ¤ ´ÙÀÌ¾ó·Î±× Ã¢ÀÇ ¼öÁ¤ ¹öÆ°
+		Display_Sub1 imsi = (Display_Sub1)vc.elementAt(pos1);
+		if(btfdlg2.getText().trim().length() !=0){
+			imsi.setTel(btfdlg2.getText().trim());
+		}
+		if(btfdlg3.getText().trim().length() !=0){
+			imsi.setAddr(btfdlg3.getText().trim());
+		}
+		bjdlg.setVisible(false);
+	}//bbtdlg
+	else if(e.getSource()==bbtdlg1){
+		bjdlg.setVisible(false);
+	}
+	
+		
+ }//actionPerformed
+
+
+void view(int pos) {
+	Display_Sub1 imsi = (Display_Sub1)vc.elementAt(pos);
+	ata.setText("ÀÌ¸§ : " + imsi.getName() + "\n");
+	ata.append("ÁÖ¹Î¹øÈ£ : " + imsi.getJumin().substring(0, 6) + " - "
+			+ imsi.getJumin().substring(6)+"\n");
+	ata.append("ÀüÈ­¹øÈ£ : " + imsi.getTel()+"\n");
+	ata.append("ÁÖ¼Ò : " + imsi.getAddr() + "\n");
+	
+	int[] jumin = new int[13];
+	for(int i = 0; i < 13; i++){
+		jumin[i] = imsi.getJumin().charAt(i) - '0';
+	}
+	int year = 0;
+	int month = 0;
+	int day = 0;
+	if(jumin[6] == 1 || jumin[6] == 2){
+		year = 1900;
+	}
+	else if(jumin[6] == 3 || jumin[6] == 4){
+		year = 2000;
+	}
+	year += jumin[0] * 10 + jumin[1];
+	month = jumin[2] * 10 + jumin[3];
+	day = jumin[4] * 10 + jumin[5];
+	ata.append("»ı³â¿ùÀÏ : " + year + "³â " + month + "¿ù " + day + "ÀÏ\n");
+	ata.append("¼ºº° : " + ((jumin[6] % 2 == 0) ? "¿©¼º" : "³²¼º") + "\n");
+	Calendar ca = Calendar.getInstance();
+	ata.append("³ªÀÌ : " + ((int)ca.get(Calendar.YEAR) - year) + "¼¼\n");
+	
+	
+}
 	
 
 
@@ -481,4 +973,3 @@ public class Display_01 {
 		Display_Sub ex = new Display_Sub(null); 
 	}
 }
-
