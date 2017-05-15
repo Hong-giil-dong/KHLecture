@@ -15,9 +15,9 @@ public class Exam05 {
 			System.out.println("드라이버 로드 실패");
 			return;
 		}
-		String url = "jdbc:oracle:thin:@localhost:1521:orcm";
-		String id = "scott";
-		String pass = "tiger";
+		String url = "jdbc:oracle:thin:@mirror4ego.iptime.org:1521:orcl";
+		String id = "test";
+		String pass = "test";
 
 		try{
 			conn = DriverManager.getConnection(url,id, pass);
@@ -31,7 +31,7 @@ public class Exam05 {
 	//회원 가입 처리 메소드
 	public boolean registerMember(String name, String id, 
 			String pass, String email){
-		String query = "insert into users values(pnum_seq.nextval, ?,?,?,?)";
+		String query = "insert into users values(?,?,?,?)";
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, name);
@@ -52,13 +52,13 @@ public class Exam05 {
 			String pass, String email){
 
 		System.out.println("회원정보 수정 처리 작업 시작");
-		String query = "update users set pname=?, ppassword=?, pemail=? where id=?";
+		String query = "update users set name=?, password=?, email=? where id=?";
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, id);
-			pstmt.setString(2, name);
-			pstmt.setString(3, pass);
-			pstmt.setString(4, email);
+			pstmt.setString(1, name);
+			pstmt.setString(2, pass);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
 
 			pstmt.executeUpdate();
 			pstmt.close();	
@@ -73,7 +73,7 @@ public class Exam05 {
 	
 	public boolean deleteMember(String id, String pass){
 		System.out.println("회원 정보를 삭제합니다.");
-		 String query = "delete from users where pid=?";
+		 String query = "delete from users where id=?";
 		 try{
 				PreparedStatement pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, id);
@@ -92,7 +92,7 @@ public class Exam05 {
 
 	//login 처리
 	public boolean loginMember(String id, String pass) {
-		String query="select * from users where pid=? and ppassword=?";
+		String query="select * from users where id=? and password=?";
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, id);
@@ -104,7 +104,7 @@ public class Exam05 {
 				pstmt.close();
 				return false;
 			}
-		/*	System.err.println("Login 성공");*/
+			System.err.println("Login 성공");
 			rs.close();
 			pstmt.close();
 		}catch(SQLException e){

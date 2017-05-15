@@ -1,4 +1,4 @@
-package jdbc02;
+/*package jdbc02;
 
 import java.io.Serializable;
 
@@ -51,3 +51,4 @@ public class Exam03 extends Exam01 implements Serializable{
 	
 	
 }
+*/

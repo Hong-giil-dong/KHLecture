@@ -74,6 +74,7 @@ public class Exam06 {
 			
 			boolean bool = dao.deleteMember(id, pass);
 			if(bool){
+				
 				System.out.println("삭제 성공");
 			}else{
 				System.out.println("삭제 실패");		

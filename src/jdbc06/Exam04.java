@@ -20,7 +20,7 @@ public class Exam04 {
 			System.err.println("접속 오류 : " + e.toString());
 		}
 		
-		out.println("에잉 ㅉㅉ" + "\n");
+		out.println("전용호" + "\n");
 		out.flush();
 		out.close();
 	}

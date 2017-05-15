@@ -1,4 +1,4 @@
-package jdbc02;
+/*package jdbc02;
 
 import java.io.Serializable;
 
@@ -16,3 +16,4 @@ public abstract class Exam01 implements Serializable {
 	
 }
 
+*/
