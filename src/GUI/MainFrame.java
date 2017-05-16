@@ -60,7 +60,7 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		
-		this.setTitle("경기 S/W 직원 관리 프로그램");
+		this.setTitle("YC 직원 관리 프로그램");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setJMenuBar(MenuBar);
 		
@@ -94,7 +94,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	void createMenu() {
-		String MenuTitle[] = {"Database", "Operations", "History", "Quit"};
+		String MenuTitle[] = {"File", "Change", "Edit", "Quit"};
 		final JMenu Menu[] = new JMenu[4];
 		
 		for(int i = 0; i < Menu.length; i++)
